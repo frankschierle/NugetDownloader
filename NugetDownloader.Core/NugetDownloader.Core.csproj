@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPackageDependencyResolver.cs" />
+    <Compile Include="IPackageDownloader.cs" />
     <Compile Include="PackageDependencyResolver.cs" />
+    <Compile Include="PackageDownloader.cs" />
     <Compile Include="PackageId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
