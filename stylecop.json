@@ -1,0 +1,36 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "frank s. schierle",
+      "documentationCulture": "en-GB",
+      "documentExposedElements": true,
+      "documentInterfaces": true,
+      "documentInternalElements": true,
+      "documentPrivateElements": true,
+      "documentPrivateFields": true
+    },
+    "indentation": {
+      "indentationSize": 2,
+      "tabSize": 2,
+      "useTabs": false
+    },
+    "layoutRules": {
+      "allowConsecutiveUsings": false,
+      "newlineAtEndOfFile": "require"
+    },
+    "maintainabilityRules": {
+      "topLevelTypes": [ "class", "interface", "enum" ]
+    },
+    "namingRules": {
+      "allowCommonHungarianPrefixes": true,
+      "allowedHungarianPrefixes": [ "as", "at", "by", "do", "go", "if", "in", "is", "it", "no", "of", "on", "or", "to" ]
+    },
+    "orderingRules": {
+      "blankLinesBetweenUsingGroups": "require",
+      "elementOrder": [ "kind", "accessibility", "constant", "static", "readonly" ],
+      "systemUsingDirectivesFirst": true,
+      "usingDirectivesPlacement": "insideNamespace"
+    }
+  }
+}
