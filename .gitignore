@@ -1,3 +1,5 @@
 ﻿/.vs
 /NugetDownloader.Core/obj
 /NugetDownloader.Core/bin
+/NugetDownloader.Cli/obj
+/NugetDownloader.Cli/bin
