@@ -41,7 +41,7 @@
       PackageId idToCompare;
       bool equals;
 
-      if ((obj == null) || (this.GetType() != obj.GetType()) || !ReferenceEquals(this, obj))
+      if ((obj == null) || (this.GetType() != obj.GetType()))
       {
         equals = false;
       }
