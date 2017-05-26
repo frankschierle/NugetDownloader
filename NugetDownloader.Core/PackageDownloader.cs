@@ -1,36 +1,18 @@
 ﻿namespace NugetDownloader.Core
 {
   using System;
-  using System.Diagnostics.CodeAnalysis;
   using System.Globalization;
   using System.IO;
   using System.Net;
   using System.Text;
 
   /// <inheritdoc />
-  [SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly", Justification = "No unmanaged resources to dispose.")]
-  public class PackageDownloader : IPackageDownloader, IDisposable
+  public class PackageDownloader : IPackageDownloader
   {
     #region Private Fields
 
     /// <summary>The base download URL for NuGet packages.</summary>
     private const string DownloadBaseUrl = "https://www.nuget.org/api/v2/package/";
-
-    /// <summary>The web client used to download packages.</summary>
-    private readonly WebClient webClient;
-
-    /// <summary>A flag inicating whether the object is disposed.</summary>
-    private bool disposed;
-
-    #endregion
-
-    #region Public Constructors
-
-    /// <summary>Initialises a new instance of the <see cref="PackageDownloader"/> class.</summary>
-    public PackageDownloader()
-    {
-      this.webClient = new WebClient();
-    }
 
     #endregion
 
@@ -51,27 +33,17 @@
         throw new ArgumentNullException(nameof(targetFileName));
       }
 
-      if (this.disposed)
-      {
-        throw new ObjectDisposedException(this.GetType().Name);
-      }
-
       if (File.Exists(targetFileName))
       {
         throw new IOException("Target file \"" + targetFileName + "\" already exists.");
       }
 
       downloadUrl = GetDownloadUrl(package);
-      this.webClient.DownloadFile(downloadUrl, targetFileName);
-    }
 
-    /// <inheritdoc />
-    [SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly", Justification = "No unmanaged resources to dispose.")]
-    public void Dispose()
-    {
-      this.webClient.Dispose();
-      this.disposed = true;
-      GC.SuppressFinalize(this);
+      using (var webClient = new WebClient())
+      {
+        webClient.DownloadFile(downloadUrl, targetFileName);
+      }
     }
 
     #endregion
