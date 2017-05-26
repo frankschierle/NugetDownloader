@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="IPackageDependencyResolver.cs" />
     <Compile Include="IPackageDownloader.cs" />
+    <Compile Include="IUrlFactory.cs" />
+    <Compile Include="NugetOrgUrlFactory.cs" />
     <Compile Include="PackageDependencyResolver.cs" />
     <Compile Include="PackageDownloader.cs" />
     <Compile Include="PackageId.cs" />
