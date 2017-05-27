@@ -48,9 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IPackageDependencyResolver.cs" />
     <Compile Include="IPackageDownloader.cs" />
     <Compile Include="IUrlFactory.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\NullLogger.cs" />
     <Compile Include="NugetOrgUrlFactory.cs" />
     <Compile Include="PackageDependencyResolver.cs" />
     <Compile Include="PackageDownloader.cs" />

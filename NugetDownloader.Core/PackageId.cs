@@ -1,6 +1,7 @@
 ﻿namespace NugetDownloader.Core
 {
   using System;
+  using System.Globalization;
 
   /// <summary>Encapsulates name and version of a package.</summary>
   public class PackageId
@@ -67,6 +68,23 @@
 
         return hash;
       }
+    }
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+      string result;
+
+      if (this.Version != null)
+      {
+        result = string.Format(CultureInfo.InvariantCulture, "{0} [Version {1}]", this.Name, this.Version);
+      }
+      else
+      {
+        result = string.Format(CultureInfo.InvariantCulture, "{0}", this.Name);
+      }
+
+      return result;
     }
 
     #endregion

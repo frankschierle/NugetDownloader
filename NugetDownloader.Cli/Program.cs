@@ -50,7 +50,8 @@
       var urlFactory = new NugetOrgUrlFactory();
       var packageDownloader = new PackageDownloader(urlFactory);
       var dependencyResolver = new PackageDependencyResolver();
-      var recursivePackageDownloader = new RecursivePackageDownloader(packageDownloader, dependencyResolver);
+      var logger = new ConsoleLogger();
+      var recursivePackageDownloader = new RecursivePackageDownloader(packageDownloader, dependencyResolver, logger);
 
       recursivePackageDownloader.DownloadPackageAndAllDependencies(package, targetDirectory);
     }
