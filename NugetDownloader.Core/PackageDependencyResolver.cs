@@ -10,13 +10,6 @@
   /// <inheritdoc />
   public class PackageDependencyResolver : IPackageDependencyResolver
   {
-    #region Private Fields
-
-    /// <summary>The XML namespace used by NUSPEC files.</summary>
-    private const string NuspecNamespace = "http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd";
-
-    #endregion
-
     #region Public Methods
 
     /// <inheritdoc />
@@ -24,7 +17,6 @@
     {
       var dependencies = new List<PackageId>();
       var nuspecFile = new XmlDocument();
-      XmlNamespaceManager namespaceManager;
       ZipArchiveEntry nuspecEntry;
       XmlNodeList dependencyNodes;
       string packageName;
@@ -47,10 +39,8 @@
         using (var stream = nuspecEntry.Open())
         {
           nuspecFile.Load(stream);
-          namespaceManager = new XmlNamespaceManager(nuspecFile.NameTable);
-          namespaceManager.AddNamespace("x", NuspecNamespace);
 
-          dependencyNodes = nuspecFile.SelectNodes("//x:dependency", namespaceManager);
+          dependencyNodes = nuspecFile.SelectNodes("//*[local-name()='dependency']");
           foreach (XmlNode node in dependencyNodes)
           {
             packageName = node.Attributes.GetNamedItem("id")?.Value;
