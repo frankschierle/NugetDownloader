@@ -2,7 +2,23 @@
 A simple tool to download a NuGet package including all of its dependencies.
 
 ## Usage of NugetDownloader command line tool
-The command line tool is not yet implemented.
+```
+Usage: NugetDownloader.exe DownloadTargetDirectory NuGetPackageID [NuGetPackageVersion]
+```
+
+### Examples
+
+Download the latest version of NuGet package Microsoft.CodeAnalysis to directory C:\Downloads:
+
+```
+NugetDownloader.exe "C:\Downloads" Microsoft.CodeAnalysis
+```
+
+Download a specific version of NuGet package Microsoft.CodeAnalysis to directory C:\Downloads:
+
+```
+NugetDownloader.exe "C:\Downloads" Microsoft.CodeAnalysis 2.1.0
+```
 
 ## Use NugetDownloader in your own software
 The core functionality of NugetDownloader is available using the ``NugetDownloader.Core`` assembly. Add the appropriate reference to your project and you can use the library as follows:
@@ -41,5 +57,6 @@ recursivePackageDownloader.DownloadPackageAndAllDependencies(packageToDownload, 
 
 ## Known issues
 
+* [Version ranges](https://docs.microsoft.com/en-us/nuget/create-packages/dependency-versions#version-ranges) are currently not supported. A version range specified in a NUSPEC file causes an exception.
 * Target frameworks are currently not supported. The tool is downloading all dependencies for all target frameworks specified in a NUSPEC file.
 * Unit tests are missing.
